@@ -1,0 +1,14 @@
+{
+    "posts": [
+        {
+            "activity": "testing",
+            "time": 5,
+            "id": 1
+        },
+        {
+            "activity": "playing",
+            "time": 7,
+            "id": 2
+        }
+    ]
+}
