@@ -11,20 +11,6 @@ class App extends React.Component {
         this.state = {
             answer: "",
         };
-        this.addData = this.addData.bind(this);
-    }
-
-    addData() {
-        fetch("http://127.0.0.1:3010/posts/1", {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ author: "Masi" }),
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                this.setState({ answer: data.author });
-                console.log(data);
-            });
     }
 
     render() {
