@@ -17,6 +17,16 @@
       "time": "3",
       "contextId": 4,
       "id": 3
+    },
+    {
+      "activity": "Contexttest",
+      "time": "5",
+      "contextId": [
+        1,
+        2,
+        3
+      ],
+      "id": 4
     }
   ],
   "contexts": [
