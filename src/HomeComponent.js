@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import AddContext from "./AddContextComponent";
 
 function HomeComponent() {
     const [current, setCurrent] = useState("");
@@ -55,11 +56,14 @@ function HomeComponent() {
         event.preventDefault();
     }
     function handleSubmit() {
-        let currentId = [];
+        let currentId = [1];
         for (let j = 0; j < contextCount; j++) {
             for (let i = 0; i < contexts.length; i++) {
                 if (contexts[i].title === currentcontext[j]) {
                     currentId[j] = contexts[i].id;
+                } else if (currentcontext[j] === undefined) {
+                    currentcontext[j] = "Hobbies";
+                    currentId[j] = 1;
                 }
                 console.log(currentcontext);
                 console.log(contexts.length);
@@ -131,6 +135,9 @@ function HomeComponent() {
                 {selectContextArray}
                 <input type="submit" value="Submit" />
             </form>
+            <br></br>
+            <br></br>
+            <AddContext />
         </>
     );
 }
