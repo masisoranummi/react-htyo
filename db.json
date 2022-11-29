@@ -1,50 +1,60 @@
 {
-    "posts": [
-        {
-            "activity": "Creating react project",
-            "time": 5,
-            "id": 1,
-            "contextId": 2
-        },
-        {
-            "activity": "Playing videogames",
-            "time": 7,
-            "id": 2,
-            "contextId": 1
-        },
-        {
-            "activity": "Writing",
-            "time": "3",
-            "contextId": 4,
-            "id": 3
-        },
-        {
-            "activity": "Contexttest",
-            "time": "5",
-            "contextId": [1, 2, 3],
-            "id": 4
-        }
-    ],
-    "contexts": [
-        {
-            "id": 1,
-            "title": "Hobbies"
-        },
-        {
-            "id": 2,
-            "title": "School"
-        },
-        {
-            "id": 3,
-            "title": "Rest"
-        },
-        {
-            "id": 4,
-            "title": "Chores"
-        },
-        {
-            "id": 5,
-            "title": "Other"
-        }
-    ]
+  "posts": [
+    {
+      "activity": "Creating react project",
+      "time": 5,
+      "id": 1,
+      "contextId": [
+        2
+      ]
+    },
+    {
+      "activity": "Playing videogames",
+      "time": 9,
+      "contextId": [
+        1
+      ],
+      "id": 2
+    },
+    {
+      "activity": "Writing",
+      "time": "3",
+      "contextId": [
+        4
+      ],
+      "id": 3
+    },
+    {
+      "activity": "Contexttest",
+      "time": 5,
+      "contextId": [
+        1,
+        2,
+        3
+      ],
+      "id": 4
+    }
+  ],
+  "contexts": [
+    {
+      "id": 1,
+      "title": "Hobbies"
+    },
+    {
+      "id": 2,
+      "title": "School"
+    },
+    {
+      "id": 3,
+      "title": "Rest"
+    },
+    {
+      "id": 4,
+      "title": "Chores"
+    },
+    {
+      "id": 5,
+      "title": "Other"
+    }
+  ]
 }

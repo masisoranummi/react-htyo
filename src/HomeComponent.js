@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import AddContext from "./AddContextComponent";
+import AddTime from "./AddTimeComponent";
 
 function HomeComponent() {
     const [current, setCurrent] = useState("");
@@ -138,6 +139,10 @@ function HomeComponent() {
             <br></br>
             <br></br>
             <AddContext />
+            <br></br>
+            <br></br>
+            <br></br>
+            <AddTime />
         </>
     );
 }
