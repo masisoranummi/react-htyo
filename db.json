@@ -2,11 +2,11 @@
   "posts": [
     {
       "activity": "Creating react project",
-      "time": 5,
-      "id": 1,
+      "time": 8,
       "contextId": [
         2
-      ]
+      ],
+      "id": 1
     },
     {
       "activity": "Playing videogames",
@@ -23,16 +23,6 @@
         4
       ],
       "id": 3
-    },
-    {
-      "activity": "Contexttest",
-      "time": 5,
-      "contextId": [
-        1,
-        2,
-        3
-      ],
-      "id": 4
     }
   ],
   "contexts": [
@@ -51,10 +41,6 @@
     {
       "id": 4,
       "title": "Chores"
-    },
-    {
-      "id": 5,
-      "title": "Other"
     }
   ]
 }
