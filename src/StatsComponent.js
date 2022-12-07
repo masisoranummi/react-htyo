@@ -9,7 +9,7 @@ class StatsComponent extends React.Component {
             stats: [],
             newstats: [],
             currentContext: "All",
-            allContexts: [<option>{"All"}</option>],
+            allContexts: [<option key={"default"}>{"All"}</option>],
             fullContexts: [],
             currentContextId: null,
         };
