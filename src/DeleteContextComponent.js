@@ -105,7 +105,7 @@ function DeleteContext() {
                     <select onChange={handleContext}>
                         value={currentcontext}
                         {newContexts}
-                    </select>
+                    </select>{" "}
                     <input type="submit" value="Submit" />
                 </form>
             ) : null}

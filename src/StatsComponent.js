@@ -1,5 +1,4 @@
 import React from "react";
-//import StatsContextComponent from "./StatsContextComponent";
 
 class StatsComponent extends React.Component {
     constructor(props) {
@@ -67,7 +66,10 @@ class StatsComponent extends React.Component {
                                 activityArr.push(
                                     <p key={i}>
                                         {this.state.stats[i].activity} for{" "}
-                                        {this.state.stats[i].time} hours
+                                        {this.state.stats[i].time} hours,{" "}
+                                        {this.state.stats[i].minutes} minutes
+                                        and {this.state.stats[i].seconds}{" "}
+                                        seconds
                                     </p>
                                 );
                             }
@@ -104,7 +106,9 @@ class StatsComponent extends React.Component {
             activityArr.push(
                 <p key={i}>
                     {this.state.stats[i].activity} for{" "}
-                    {this.state.stats[i].time} hours
+                    {this.state.stats[i].time} hours,{" "}
+                    {this.state.stats[i].minutes} minutes and{" "}
+                    {this.state.stats[i].seconds} seconds
                 </p>
             );
         }

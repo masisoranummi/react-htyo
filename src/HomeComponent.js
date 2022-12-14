@@ -3,10 +3,13 @@ import AddContext from "./AddContextComponent";
 import AddTime from "./AddTimeComponent";
 import DeleteComponent from "./DeleteComponent";
 import DeleteContext from "./DeleteContextComponent";
+import TimerComponent from "./TimerComponent";
 
 function HomeComponent() {
     const [current, setCurrent] = useState("");
-    const [time, setTime] = useState(1);
+    const [time, setTime] = useState(0);
+    const [minutes, setMinutes] = useState(0);
+    const [seconds, setSeconds] = useState(0);
     const [contexts, setContexts] = useState([]);
     const [newContexts, setNewContexts] = useState([]);
     const [currentcontext, setCurrentContext] = useState([]);
@@ -39,6 +42,14 @@ function HomeComponent() {
     }
     function handleTime(event) {
         setTime(event.target.value);
+        event.preventDefault();
+    }
+    function handleMinutes(event) {
+        setMinutes(event.target.value);
+        event.preventDefault();
+    }
+    function handleSeconds(event) {
+        setSeconds(event.target.value);
         event.preventDefault();
     }
     function handleContext(event, index) {
@@ -78,7 +89,9 @@ function HomeComponent() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 activity: current,
-                time: time,
+                time: parseInt(time),
+                minutes: parseInt(minutes),
+                seconds: parseInt(seconds),
                 contextId: currentId,
             }),
         })
@@ -90,7 +103,12 @@ function HomeComponent() {
             "An activity was submitted: " +
                 current +
                 "\nTime submitted: " +
-                time
+                time +
+                " hours, " +
+                minutes +
+                " minutes and " +
+                seconds +
+                " seconds"
         );
     }
     let selectContextArray = [];
@@ -102,13 +120,17 @@ function HomeComponent() {
             </select>
         );
     }
+
     return (
         <>
             <h1>Home</h1>
+            <TimerComponent />
+            <p></p>
+            <h3>Add a new activity:</h3>
             <form onSubmit={handleSubmit}>
                 {" "}
                 <label>
-                    Activity:
+                    Activity:{" "}
                     <input
                         type="text"
                         value={current}
@@ -116,17 +138,39 @@ function HomeComponent() {
                     />{" "}
                 </label>
                 <label>
-                    Hours:
+                    Hours:{" "}
                     <input
                         className="numberlabel"
                         type="number"
-                        min={1}
+                        min={0}
                         value={time}
                         onChange={handleTime}
                     />{" "}
                 </label>
                 <label>
-                    Context amount:
+                    Minutes:{" "}
+                    <input
+                        className="numberlabel"
+                        type="number"
+                        min={0}
+                        max={59}
+                        value={minutes}
+                        onChange={handleMinutes}
+                    />{" "}
+                </label>
+                <label>
+                    Seconds:{" "}
+                    <input
+                        className="numberlabel"
+                        type="number"
+                        min={0}
+                        max={59}
+                        value={seconds}
+                        onChange={handleSeconds}
+                    />{" "}
+                </label>
+                <label>
+                    Context amount:{" "}
                     <input
                         className="numberlabel"
                         type="number"
@@ -135,18 +179,16 @@ function HomeComponent() {
                         onChange={handleContextAmount}
                     />{" "}
                 </label>
-                {selectContextArray}
-                <input type="submit" value="Submit" />
+                {selectContextArray} <input type="submit" value="Submit" />
             </form>
             <br></br>
-            <br></br>
+            <h3>Context settings:</h3>
             <AddContext />
             <DeleteContext />
             <br></br>
             <br></br>
-            <br></br>
+            <h3>Edit existing activities:</h3>
             <AddTime />
-            <br></br>
             <br></br>
             <DeleteComponent />
         </>

@@ -1,20 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 
-function AddTime() {
+function TimerComponent() {
     const [loading, setLoading] = useState(true);
     const [time, setTime] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [activites, setActivities] = useState([]);
     const [newActivities, setNewActivities] = useState([]);
-    const [open, setOpen] = useState(false);
+    const [timer, setTimer] = useState(false);
+    const [oldTime, setOldTime] = useState();
+    const [newTime, setNewTime] = useState();
+    const [currentTime, setCurrentTime] = useState();
+
     const [currentActivity, setCurrentActivity] = useState(
         "Creating react project"
     );
-
-    const handleOpen = () => {
-        setOpen(!open);
-    };
 
     useEffect(() => {
         fetch("http://localhost:3010/posts")
@@ -35,7 +36,43 @@ function AddTime() {
             });
     }, [loading]);
 
-    function handleSubmit() {
+    useEffect(() => {
+        setCurrentTime(newTime - oldTime);
+    }, [newTime]);
+
+    useEffect(() => {
+        setTime(Math.floor((currentTime / (1000 * 60 * 60)) % 24));
+        setMinutes(Math.floor((currentTime / 1000 / 60) % 60));
+        setSeconds(Math.floor((currentTime / 1000) % 60));
+    }, [currentTime]);
+
+    useEffect(() => {
+        console.log(time);
+        console.log(minutes);
+        console.log(seconds);
+        if (seconds > 0) {
+            postResults();
+        }
+    }, [seconds]);
+
+    function handleActivity(event) {
+        setCurrentActivity(event.target.value);
+        event.preventDefault();
+    }
+
+    function handleStart(event) {
+        setTimer(event.target.value);
+        setOldTime(Date.now());
+        event.preventDefault();
+    }
+
+    function handleEnd(event) {
+        setTimer(event.target.value);
+        setNewTime(Date.now());
+        event.preventDefault();
+    }
+
+    function postResults() {
         let currentId;
         let currentTime;
         let currentMinutes;
@@ -78,80 +115,40 @@ function AddTime() {
                 console.log(data);
             });
         alert(
-            `${time} hours and ${minutes} minutes was added to the activity: ${currentActivity}`
+            `${time} hours, ${minutes} minutes and ${seconds} was added to the activity: ${currentActivity}`
         );
+        refreshPage();
     }
 
-    function handleTime(event) {
-        setTime(event.target.value);
-        console.log(activites);
-        event.preventDefault();
-    }
-
-    function handleMinutes(event) {
-        setMinutes(event.target.value);
-        event.preventDefault();
-    }
-
-    function handleSeconds(event) {
-        setSeconds(event.target.value);
-        event.preventDefault();
-    }
-
-    function handleActivity(event) {
-        setCurrentActivity(event.target.value);
-        event.preventDefault();
+    function refreshPage() {
+        window.location.reload(false);
     }
 
     return (
         <>
-            <button onClick={handleOpen}>
-                Add time to an existing activity
-            </button>
-            {open ? (
-                <form onSubmit={handleSubmit}>
-                    {" "}
+            <h3>Start timer:</h3>{" "}
+            <form>
+                {" "}
+                {timer ? (
+                    `Currently active: ${currentActivity} `
+                ) : (
                     <select onChange={handleActivity}>
                         value={currentActivity}
                         {newActivities}
-                    </select>{" "}
-                    <label>
-                        Hours:{" "}
-                        <input
-                            className="numberlabel"
-                            type="number"
-                            min={0}
-                            value={time}
-                            onChange={handleTime}
-                        />{" "}
-                    </label>
-                    <label>
-                        Minutes:{" "}
-                        <input
-                            className="numberlabel"
-                            type="number"
-                            min={0}
-                            max={59}
-                            value={minutes}
-                            onChange={handleMinutes}
-                        />{" "}
-                    </label>
-                    <label>
-                        Seconds:{" "}
-                        <input
-                            className="numberlabel"
-                            type="number"
-                            min={0}
-                            max={59}
-                            value={seconds}
-                            onChange={handleSeconds}
-                        />{" "}
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-            ) : null}
+                    </select>
+                )}{" "}
+                {timer ? (
+                    <button onClick={handleEnd} value={false}>
+                        Stop timer
+                    </button>
+                ) : (
+                    <button onClick={handleStart} value={true}>
+                        Start timer
+                    </button>
+                )}
+            </form>
         </>
     );
 }
 
-export default AddTime;
+export default TimerComponent;

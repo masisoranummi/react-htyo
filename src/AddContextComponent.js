@@ -35,7 +35,7 @@ function AddContext() {
                 <form onSubmit={handleSubmit}>
                     {" "}
                     <label>
-                        New context:
+                        New context:{" "}
                         <input
                             type="text"
                             value={newContext}
