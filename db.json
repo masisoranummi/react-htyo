@@ -1,46 +1,62 @@
 {
-    "posts": [
-        {
-            "activity": "Creating react project",
-            "time": 2,
-            "minutes": 6,
-            "seconds": 57,
-            "contextId": [2],
-            "id": 1
-        },
-        {
-            "activity": "Playing videogames",
-            "time": 11,
-            "minutes": 2,
-            "seconds": 0,
-            "contextId": [1],
-            "id": 2
-        },
-        {
-            "activity": "Writing",
-            "time": 5,
-            "minutes": 50,
-            "seconds": 57,
-            "contextId": [4],
-            "id": 3
-        }
-    ],
-    "contexts": [
-        {
-            "id": 1,
-            "title": "Hobbies"
-        },
-        {
-            "id": 2,
-            "title": "School"
-        },
-        {
-            "id": 3,
-            "title": "Rest"
-        },
-        {
-            "id": 4,
-            "title": "Chores"
-        }
-    ]
+  "posts": [
+    {
+      "activity": "Creating react project",
+      "time": 2,
+      "minutes": 6,
+      "seconds": 59,
+      "contextId": [
+        2
+      ],
+      "id": 1
+    },
+    {
+      "activity": "Playing videogames",
+      "time": 11,
+      "minutes": 2,
+      "seconds": 0,
+      "contextId": [
+        1
+      ],
+      "id": 2
+    },
+    {
+      "activity": "Writing",
+      "time": 5,
+      "minutes": 50,
+      "seconds": 57,
+      "contextId": [
+        4
+      ],
+      "id": 3
+    },
+    {
+      "activity": "Washing dishes",
+      "time": 0,
+      "minutes": 10,
+      "seconds": 20,
+      "contextId": [
+        4
+      ],
+      "id": 4
+    }
+  ],
+  "contexts": [
+    {
+      "id": 1,
+      "title": "Hobbies"
+    },
+    {
+      "id": 2,
+      "title": "School"
+    },
+    {
+      "id": 3,
+      "title": "Rest"
+    },
+    {
+      "id": 4,
+      "title": "Chores"
+    }
+  ]
 }
